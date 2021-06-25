@@ -1,30 +1,34 @@
 // include node packages
-const fs = require('fs');
-const inquirer = require('inquirer');
+const fs = require("fs");
+const inquirer = require("inquirer");
+
+const Engineer = require("./lib/Engineer");
+const Intern = require("./lib/Intern");
+const Manager = require("./lib/Manager");
 
 let employeeArr = [];
 
 // add array of questions for all employees
 const questions = [
     {
-        type: 'list',
-        name: 'role',
+        type: "list",
+        name: "role",
         message:"What is the employee's role?",
         choices: ['Manager', 'Engineer', 'Intern']
     },
     {
-        type:'input',
-        name: 'name',
+        type:"input",
+        name: "name",
         message: "What is the Employee's name?"
     },
     {
-        type:'input',
-        name: 'id',
+        type:"input",
+        name: "id",
         message: "What is the employee's ID number?"
     },
     {
-        type: 'input',
-        name: 'email',
+        type: "input",
+        name: "email",
         message: "What is the employee's email?"
     }]
 
@@ -98,6 +102,7 @@ const questions = [
             officeNumber = response.officeNumber;
             let employee = new managerQuestions(name, id, email, officeNumber);
             employeesArr.push(employee);
+            addEmployee(employeeArr);
           })
         }
 
@@ -107,6 +112,7 @@ const questions = [
             github = response.github;
             let employee = new Engineer(name, id, email, github);
             employeesArr.push(employee);
+            addEmployee(employeeArr);
           })
         }
 
@@ -116,6 +122,7 @@ const questions = [
             school = response.school;
             let employee = new Intern(name, id, email, school);
             employeesArr.push(employee);
+            addEmployee(employeeArr);
           })
         }
       })
