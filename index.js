@@ -1,6 +1,8 @@
 // include node packages
 const fs = require("fs");
 const inquirer = require("inquirer");
+const fileDirectory = path.resolve(__dirname, "dist");
+const filePath = path.join(fileDirectory, "index.html");
 
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
