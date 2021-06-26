@@ -101,7 +101,7 @@ const questions = [
             .prompt(managerQuestions).then(function (response) {
             officeNumber = response.officeNumber;
             let employee = new managerQuestions(name, id, email, officeNumber);
-            employeesArr.push(employee);
+            employeeArr.push(employee);
             addEmployee(employeeArr);
           })
         }
@@ -111,7 +111,7 @@ const questions = [
             .prompt(engineerQuestions).then(function (response) {
             github = response.github;
             let employee = new Engineer(name, id, email, github);
-            employeesArr.push(employee);
+            employeeArr.push(employee);
             addEmployee(employeeArr);
           })
         }
@@ -121,7 +121,7 @@ const questions = [
             .prompt(internQuestions).then(function (response) {
             school = response.school;
             let employee = new Intern(name, id, email, school);
-            employeesArr.push(employee);
+            employeeArr.push(employee);
             addEmployee(employeeArr);
           })
         }
