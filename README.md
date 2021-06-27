@@ -6,6 +6,9 @@
   ## Description
   A Node.js command-line application that takes in information about employees on a software engineering team and generates an HTML webpage that displays summaries for each person
 
+  ### Screenshot of index.html file in web browser
+  ![Team Profile Generator index.html](./assets/images/team-profile.jpg)
+
   ## Walkthrough Video
 
   ![Team Profile Generator Walkthrough Video](./assets/videos/team-profile-walk-through.gif)
@@ -28,6 +31,10 @@
 
   ## Tests
   To run the tests for this application, enter `npm run test` from the root directory.
+
+  ### Screenshot of tests passing in terminal
+  ![Team Profile Generator Walkthrough Video](./assets/images/run-tests.jpg)
+
 
   ## Questions
   If you have any questions, please contact me!
