@@ -34,17 +34,17 @@ const questions = [
         }
     },
     {
-        type:"input",
-        name: "id",
-        message: "What is the employee's ID number? (Required)",
-        validate: id => {
-          if (id) {
-            return true;
-          } else {
-            console.log("Please enter the Employee's ID number!");
-            return false;
-          }
+      type:"input",
+      name: "id",
+      message: "What is the employee's ID number? (Required)",
+      validate: id => {
+        if (id) {
+          return true;
+        } else {
+          console.log("Please enter the Employee's ID number!");
+          return false;
         }
+      }
     },
     {
         type: "input",
