@@ -38,6 +38,6 @@ test("gets email when running getEmail()", () => {
 
 test("returns 'Employee' when running getRole()", () => {
     const role = "Employee";
-    const employee = new Employee("Peter", 13, "peter@officespace.com");
+    const employee = new Employee("Peter Gibbons", 13, "peter-gibbons@officespace.com");
     expect(employee.getRole()).toBe(role);
 })

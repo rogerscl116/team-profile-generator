@@ -1,12 +1,14 @@
 // include node packages
 const fs = require("fs");
 const inquirer = require("inquirer");
+const path = require("path");
 const fileDirectory = path.resolve(__dirname, "dist");
 const filePath = path.join(fileDirectory, "index.html");
 
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const Manager = require("./lib/Manager");
+const renderHTML = require("./lib/generateHTML");
 
 let employeeArr = [];
 
@@ -21,17 +23,41 @@ const questions = [
     {
         type:"input",
         name: "name",
-        message: "What is the Employee's name?"
+        message: "What is the Employee's name? (Required)",
+        validate: name => {
+          if (name) {
+            return true;
+          } else {
+            console.log("Please enter the Employee's name!");
+            return false;
+          }
+        }
     },
     {
         type:"input",
         name: "id",
-        message: "What is the employee's ID number?"
+        message: "What is the employee's ID number? (Required)",
+        validate: id => {
+          if (id) {
+            return true;
+          } else {
+            console.log("Please enter the Employee's ID number!");
+            return false;
+          }
+        }
     },
     {
         type: "input",
         name: "email",
-        message: "What is the employee's email?"
+        message: "What is the employee's email? (Required)",
+        validate: email => {
+          if (email) {
+            return true;
+          } else {
+            console.log("Please enter the Employee's email!");
+            return false;
+          }
+        }
     }]
 
     // add questions for manager role
@@ -102,7 +128,7 @@ const questions = [
             inquirer
             .prompt(managerQuestions).then(function (response) {
             officeNumber = response.officeNumber;
-            let employee = new managerQuestions(name, id, email, officeNumber);
+            let employee = new Manager(name, id, email, officeNumber);
             employeeArr.push(employee);
             addEmployee(employeeArr);
           })
@@ -136,6 +162,21 @@ const questions = [
             type: "confirm",
             name: "addEmployee",
             message: "Would you like to add an employee? (Required)"
+        }).then(function (response) {
+          let createEmployee = response.addEmployee;
+          if (createEmployee === true) {
+            init();
+          }
+          else if (createEmployee === false) {
+            fs.writeFile(filePath, renderHTML(array), function(err) {
+              if (err) {
+                return console.log(err);
+              }
+
+              // success message
+              console.log("Your index.html file has been created in the 'dist' folder!");
+            })
+          }
         })
     }
 
